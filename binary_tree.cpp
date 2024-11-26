@@ -1,7 +1,4 @@
 #include <bits/stdc++.h>
-#define mp std::make_pair
-#define pr std::pair<int, int>
-#define ll long long
 #define NAUP std::ios::sync_with_stdio(0); std::cin.tie(0); std::cout.tie(0)
 
 struct Node {
@@ -23,7 +20,7 @@ struct BinaryTree{
     Node* root; 
     BinaryTree(Node* root) : root(root) {}
     
-        void insert(int value) {
+    void insert(int value) {
         Node* newNode = new Node(value);
         Node* current = root;
         Node* parent = nullptr;
@@ -32,17 +29,21 @@ struct BinaryTree{
             parent = current;
             if (value < current->data) {
                 current = current->left;
-            } else {
+            } 
+            else {
                 current = current->right;
             }
         }
 
         newNode->parent = parent;
+
         if (parent == nullptr) {
             root = newNode;
-        } else if (value < parent->data) {
+        } 
+        else if (value < parent->data) {
             parent->left = newNode;
-        } else {
+        } 
+        else {
             parent->right = newNode;
         }
     }
