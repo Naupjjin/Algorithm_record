@@ -23,10 +23,18 @@ struct Node {
 
 class RedBlackTree {
     private:
+        // right rotation
+        void right_rotation(){
+            
+        }
         
+        // left rotation
+        void left_rotation(){
+            
+        }
     
     public:
-    
+        
 }
 
 
