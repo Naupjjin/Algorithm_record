@@ -32,6 +32,33 @@ private:
         if (value < node->data) return search(node->left, value);
         return search(node->right, value);
     }
+    
+    int check_node_status(Node* node){
+        if(node -> left == nullptr && node -> right == nullptr) return 0;
+        else if(node -> left == nullptr and node -> right != nullptr) return 1;
+        else if(node -> left != nullptr and node -> right == nullptr) return 2;
+        else return 3;
+    }
+    
+    void transplant(Node* u, Node* v) {
+        if (u->parent == nullptr) {
+            root = v;
+        } else if (u == u->parent->left) {
+            u->parent->left = v;
+        } else {
+            u->parent->right = v;
+        }
+        if (v != nullptr) {
+            v->parent = u->parent;
+        }
+    }
+    
+    Node* findMin(Node* node) {
+        while (node->left != nullptr) {
+            node = node->left;
+        }
+        return node;
+    }
 
 public:
     // Constructor
@@ -73,11 +100,39 @@ public:
         
         /*
         delete have three case:
-        1. want_del_node is leaf Node(left child and Right child are nullptr)
-        2. want_del_node is parent Node and one of left and Right have value
-        3. want_del_node is parent Node and all child node have value
+        case 0 want_del_node is leaf Node(left child and Right child are nullptr)
+        case 1 2 want_del_node is parent Node and one of left and Right have value
+        case 3 want_del_node is parent Node and all child node have value
         */
         
+        switch(check_node_status(want_del_node)){
+            case 0:
+                transplant(want_del_node, nullptr);
+                break;
+            case 1:
+                transplant(want_del_node, want_del_node->right);
+                break;
+            case 2:
+                transplant(want_del_node, want_del_node->left);
+                break;
+            case 3:
+                Node* successor = findMin(want_del_node->right);
+                
+                if (successor->parent != want_del_node) {
+                    transplant(successor, successor->right);
+                    successor->right = want_del_node->right;
+                    successor->right->parent = successor;
+                }
+                
+                transplant(want_del_node, successor);
+                
+                successor->left = want_del_node->left;
+                successor->left->parent = successor;
+                
+                break;
+        }
+        
+        delete want_del_node;
     
       
     }
@@ -101,6 +156,10 @@ int main() {
     tree.insert(7);
 
     tree.printInOrder(); // Output: 3 5 7 10 15
+    
+    tree.deleteNode(5);
+
+    tree.printInOrder();
 
     return 0;
 }
