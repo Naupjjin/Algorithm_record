@@ -13,12 +13,44 @@ struct Node{
 };
 
 class AVLtree{
+private:
+    Node* root;
+
+    void _Right_rotation(){
+        
+    }
+
+    void _Left_rotation(){
+        
+    }
     
+    void _cal_Balance_Factor(){
+        
+    }
+    
+    void getBalanceFactor(){
+        
+    }
+
+public:
+    
+    void InsertNode(int value){
+        
+    }
+    
+    void DeleteNode(){
+        
+    }
+    
+    Node* SearchNode(){
+        return root;
+    }
+
 };
 
 int main() {
     NAUP;
-    
+    AVLtree tree;
 
     return 0;
 }
