@@ -23,20 +23,24 @@ private:
         std::cout << node->data << " ";
         inorder(node->right);
     }
+    
+    // Preorder traversal
+    void preorder(Node* node) {
+        if (node == nullptr) return;
+        std::cout << node->data << " "; 
+        preorder(node->left);          // Traverse left subtree
+        preorder(node->right);         // Traverse right subtree
+    }
 
-    void _Right_rotation(){
+    void _getRightRotation(){
         
     }
 
-    void _Left_rotation(){
+    void _getLeftRotation(){
         
     }
     
-    void _cal_Balance_Factor(){
-        
-    }
-    
-    void getBalanceFactor(){
+    void _getBalanceFactor(){
         
     }
 
@@ -73,6 +77,7 @@ public:
                 
             }
             
+            
         }
         
     }
@@ -88,6 +93,10 @@ public:
     void printInOrder() {
         inorder(root);
     }
+    
+    void printPreOrder() {
+        preorder(root);
+    }
 
 };
 
@@ -95,12 +104,12 @@ int main() {
     NAUP;
     AVLtree tree;
     
+    tree.InsertNode(0);
     tree.InsertNode(2);
-    tree.InsertNode(5);
     tree.InsertNode(4);
-    tree.InsertNode(15);
-    tree.InsertNode(7);
-    tree.printInOrder();
+    tree.InsertNode(1);
+    tree.InsertNode(3);
+    tree.printPreOrder();
 
     return 0;
 }
