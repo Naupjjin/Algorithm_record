@@ -23,6 +23,14 @@ private:
         std::cout << node->data << " ";
         inorder(node->right);
     }
+    
+        // Preorder traversal
+    void preorder(Node* node) {
+        if (node == nullptr) return;
+        std::cout << node->data << " "; 
+        preorder(node->left);          // Traverse left subtree
+        preorder(node->right);         // Traverse right subtree
+    }
 
     // function about search a node
     Node* search(Node* node, int value) {
@@ -142,24 +150,19 @@ public:
         inorder(root);
     }
     
+    void printPreOrder() {
+        preorder(root);
+    }
+    
 };
 
 int main() {
     NAUP;
 
+
     BinaryTree tree;
 
-    tree.insert(10);
-    tree.insert(5);
-    tree.insert(15);
-    tree.insert(3);
-    tree.insert(7);
-
-    tree.printInOrder(); 
-    
-    tree.deleteNode(5);
-
-    tree.printInOrder();
+    tree.printPreOrder();
 
     return 0;
 }
