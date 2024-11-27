@@ -158,11 +158,7 @@ public:
 
 int main() {
     NAUP;
-
-
     BinaryTree tree;
-
-    tree.printPreOrder();
 
     return 0;
 }
