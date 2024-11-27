@@ -116,18 +116,18 @@ public:
                 transplant(want_del_node, want_del_node->left);
                 break;
             case 3:
-                Node* successor = findMin(want_del_node->right);
+                Node* MinNode = findMin(want_del_node->right);
                 
-                if (successor->parent != want_del_node) {
-                    transplant(successor, successor->right);
-                    successor->right = want_del_node->right;
-                    successor->right->parent = successor;
+                if (MinNode->parent != want_del_node) {
+                    transplant(MinNode, MinNode->right);
+                    MinNode->right = want_del_node->right;
+                    MinNode->right->parent = MinNode;
                 }
                 
-                transplant(want_del_node, successor);
+                transplant(want_del_node, MinNode);
                 
-                successor->left = want_del_node->left;
-                successor->left->parent = successor;
+                MinNode->left = want_del_node->left;
+                MinNode->left->parent = MinNode;
                 
                 break;
         }
