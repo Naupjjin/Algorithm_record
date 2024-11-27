@@ -155,7 +155,7 @@ int main() {
     tree.insert(3);
     tree.insert(7);
 
-    tree.printInOrder(); // Output: 3 5 7 10 15
+    tree.printInOrder(); 
     
     tree.deleteNode(5);
 
