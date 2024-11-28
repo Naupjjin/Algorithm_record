@@ -162,23 +162,13 @@ int main() {
     NAUP;
     
     AVLTree tree;
-    tree.insert(30);
-    tree.insert(20);
-    tree.insert(40);
     tree.insert(10);
-    tree.insert(25);
-    tree.insert(50);
+    tree.insert(5);
+    tree.insert(15);
+    tree.insert(2);
+    tree.insert(7);
 
     std::cout << "------------:" << std::endl;
     tree.printTreeInfo();
-
-    std::cout << "\n----------------:" << std::endl;
-    tree.Remove(20);
-    tree.printTreeInfo();
-
-    std::cout << "\n---------------:" << std::endl;
-    tree.Remove(30);
-    tree.printTreeInfo();
-
     return 0;
 }
