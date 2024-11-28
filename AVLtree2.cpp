@@ -141,6 +141,22 @@ private:
              << std::endl;
         printNodeInfo(node->right);
     }
+    
+    // inorder traversal
+    void inorder(Node* node) {
+        if (node == nullptr) return;
+        inorder(node->left);
+        std::cout << node->value << " ";
+        inorder(node->right);
+    }
+    
+    // Preorder traversal
+    void preorder(Node* node) {
+        if (node == nullptr) return;
+        std::cout << node->value << " "; 
+        preorder(node->left);          // Traverse left subtree
+        preorder(node->right);         // Traverse right subtree
+    }
 
 public:
     AVLTree() : root(nullptr) {}
@@ -156,6 +172,15 @@ public:
     void printTreeInfo() {
         printNodeInfo(root);
     }
+    
+    // print inorder traversal result
+    void printInOrder() {
+        inorder(root);
+    }
+    
+    void printPreOrder() {
+        preorder(root);
+    }
 };
 
 int main() {
@@ -168,7 +193,9 @@ int main() {
     tree.insert(2);
     tree.insert(7);
 
-    std::cout << "------------:" << std::endl;
-    tree.printTreeInfo();
+    // std::cout << "------------:" << std::endl;
+    // tree.printTreeInfo();
+    
+    tree.printPreOrder();
     return 0;
 }
